@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    List of Authors
+{% endblock title %}
+
+{% block body %}
+
+    {% if authors %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Names</th>
+                    <th>Last Names</th>
+                    <th>Nationality</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                    <tr>
+                        <td>{{ author.id }}</td>
+                        <td>{{ author.name }}</td>
+                        <td>{{ author.last_name }}</td>
+                        <td>{{ author.nationality }}</td>
+                        <td>{{ author.description }}</td>
+                        <td>
+                            <a href="{% url 'book:Edit_Author' author.id %}">Edit</a>
+                            <a href="{% url 'book:Delete_Author' author.id %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>Don't exist authors register</h1>
+    {% endif %}
+
+{% endblock body %}
