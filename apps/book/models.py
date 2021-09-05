@@ -8,6 +8,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=200, blank=False, null=False)
     nationality = models.CharField(max_length=200, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
+    state = models.BooleanField("State", default=True)
     creation_date = models.DateField('Creation Date', auto_now=True, auto_now_add=False)
 
     # It's works for the name in the admin page
